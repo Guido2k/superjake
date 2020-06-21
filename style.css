@@ -1,0 +1,828 @@
+body {
+    overflow: hidden;
+    background-color: black;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.hide {
+    display: none;
+
+}
+
+.gameArea {
+    background-image: url("./images/fire3.jpg");
+    background-size: cover;
+
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    overflow: hidden;
+
+}
+
+.gameArea2 {
+    background-image: url("./images/water.jpg");
+    background-size: cover;
+
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    overflow: hidden;
+
+}
+
+.gameArea3 {
+    background-image: url("./images/circus2.jpg");
+    background-size: cover;
+
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    overflow: hidden;
+
+}
+
+.winnerScreen {
+    background-image: url("./images/win2.png");
+    background-size: cover;
+    padding-top: 100px;
+    margin-top: 25%;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    overflow: hidden;
+    /*z-index: 1001;*/
+
+}
+.score {
+    position: absolute;
+    width: 100%;
+    opacity: 0.9;
+    z-index: 100;
+    background-color: black;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    height: 55px;
+    font-size: 2em;
+    font-family: 'Bangers', cursive;
+
+}
+
+.lives {
+    background-color: black;
+    color: white;
+    text-align: left;
+    height: 30px;
+    font-size: 1.1em;
+    font-family: 'Bowlby One SC', cursive;
+    ;
+
+
+}
+
+.startScreen {
+    position: absolute;
+    /* background-color: grey; */
+    left: 0%;
+    top: 0%; /*from 50px */
+    height: 100vh;
+    color: black;
+    width: 100%;
+    /*padding: 15px; */
+    /* border: 1px solid black; */
+    text-align: center;
+    background-image: url("./images/fire2.jpg");
+    /* background-image: cover; */
+
+
+}
+
+/**
+* memo ** HERO states *** */
+
+.turd {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 130px;
+    height: 82px;
+    background-image: url("./images/superjakeR2.png");
+    z-index: 202;
+    filter: drop-shadow(10px 10px 10px red);
+}
+
+.turd_left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 130px;
+    height: 82px;
+    background-image: url("./images/superjakeL2.png");
+    z-index: 202;
+    filter: drop-shadow(10px 10px 10px red);
+}
+
+.turd_dn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 74px;
+    height: 140px;
+    background-image: url("./images/superjakeDn.png");
+    z-index: 202;
+    filter: drop-shadow(10px 10px 10px red);
+}
+
+.turd_up {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 130px;
+    height: 82px;
+    background-image: url("./images/superjakeR2.png");
+
+    z-index: 202;
+    filter: drop-shadow(10px 10px 10px red);
+}
+
+
+.deadTurd {
+    transform: rotate(180deg);
+    z-index: 202;
+}
+
+/**
+* memo ******  OTHER ENEMYS & CHARS *** *** **/
+
+.bad {
+    position: absolute;
+    height: 100px;
+    width: 121px;
+    background-image: url("./images/pig.png");
+    filter: drop-shadow(10px 10px 10px yellow);
+}
+
+.barny {
+    position: absolute;
+    height: 181px;
+    width: 100px;
+    background-image: url("./images/barny.png");
+    filter: drop-shadow(10px 10px 10px yellow);
+}
+
+
+
+.bad2 {
+    position: absolute;
+    height: 83px;
+    width: 90px;
+    background-image: url("./images/bee1.png");
+
+
+    filter: drop-shadow(10px 10px 10px yellow);
+}
+
+.fly {
+    position: absolute;
+    height: 81px;
+    width: 90px;
+    background-image: url("./images/fly2.png");
+
+
+    filter: drop-shadow(10px 10px 10px yellow);
+}
+
+.dragon {
+    position: absolute;
+    height: 100px;
+    width: 101px;
+    background-image: url("./images/dragon2.png");
+
+
+    filter: drop-shadow(10px 10px 10px yellow);
+}
+
+
+.bad3 {
+    position: absolute;
+    height: 65px;
+    width: 200px;
+    background-image: url('./images/bat2.png');
+
+    filter: drop-shadow(10px 10px 10px yellow);
+}
+
+.botbad {
+    position: absolute;
+    height: 132px;
+    width: 100px;
+    background-image: url('./images/mrbean2.png');
+
+    filter: drop-shadow(10px 10px 10px yellow);
+}
+
+.beans {
+    position: absolute;
+    height: 129px;
+    width: 80px;
+    background-image: url("./images/beans2.png");
+    animation: rotation 3s infinite linear;
+    filter: drop-shadow(7px 7px 7px red)
+}
+
+.beans2 {
+    position: absolute;
+    height: 142px;
+    width: 95px;
+    background-image: url("./images/beans5.png");
+    animation: rotation 3s infinite linear;
+    filter: drop-shadow(7px 7px 7px red)
+}
+
+.hotdog {
+    position: absolute;
+    height: 100px;
+    width: 125px;
+    background-image: url("./images/hotdog4.png");
+    animation: rotation 3s infinite linear;
+    filter: drop-shadow(7px 7px 7px red)
+}
+
+.taco {
+    position: absolute;
+    height: 87px;
+    width: 100px;
+    background-image: url("./images/taco1.png");
+    animation: rotation 13s infinite linear;
+    filter: drop-shadow(7px 7px 7px red)
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes rotation2 {
+    from {
+        transform: rotate(359deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.survivor {
+    position: absolute;
+    height: 130px;
+    width: 130px;
+    background-image: url("./images/bubbleboy1.png");
+    opacity: 0.65;
+    animation: rotation 6s linear;
+    filter: drop-shadow(10px 10px 10px red)
+}
+
+
+/**
+* memo LEVEL 2 BADDYS **********/
+
+.badL2a {
+    position: absolute;
+    height: 200px;
+    width: 398px;
+    background-image: url("./images/shark12.png");
+    filter: drop-shadow(9px 9px 9px rgb(61,61,126));
+
+
+}
+
+.shark2 {
+    position: absolute;
+    height: 132px;
+    width: 275px;
+    background-image: url("./images/shark14.png");
+    filter: drop-shadow(6px 6px 6px rgb(61, 61, 126));
+
+
+}
+
+
+.badL2b {
+    position: absolute;
+    height: 108px;
+    width: 100px;
+    background-image: url("./images/jelly.png");
+    filter: drop-shadow(10px 10px 10px yellow);
+    animation: blinking 1.5s infinite;
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 0.1
+    }
+
+    25% {
+        opacity: 0.5
+    }
+
+    50% {
+        opacity: 0.85
+    }
+
+    75% {
+        opacity: 0.4
+    }
+
+    100% {
+        opacity: 0.1
+    }
+}
+
+
+.jelly2 {
+    position: absolute;
+    height: 83px;
+    width: 100px;
+    background-image: url("./images/jellyfish2.png");
+    filter: drop-shadow(7px 7px 7px yellow);
+    animation: blinking 7s infinite;
+}
+
+.badL2c {
+    position: absolute;
+    height: 72px;
+    width: 130px;
+    background-image: url("./images/ray2.png");
+    filter: drop-shadow(10px 10px 10px rgb(117, 148, 167));
+}
+
+.ray2 {
+    position: absolute;
+    height: 122px;
+    width: 225px;
+    background-image: url("./images/bigray2.png");
+    filter: drop-shadow(10px 10px 10px rgb(117, 148, 167));
+}
+
+.goodL2a {
+    position: absolute;
+    height: 76px;
+    width: 135px;
+    background-image: url("./images/salmon1.png");
+    filter: drop-shadow(10px 10px 10px pink);
+    animation: rotation 10s infinite linear;
+}
+
+.goodL2b {
+    position: absolute;
+    height: 81px;
+    width: 100px;
+    background-image: url("./images/shrimp.png");
+    filter: drop-shadow(10px 10px 10px pink);
+    animation: rotation 13s infinite linear;
+}
+
+.goodL2c {
+    position: absolute;
+    height: 113px;
+    width: 200px;
+    background-image: url("./images/octo.png");
+    filter: drop-shadow(4px 4px 4px pink);
+    animation: rotation 22s infinite linear;
+}
+
+.puffer {
+    position: absolute;
+    height: 111px;
+    width: 110px;
+    background-image: url("./images/puffer.png");
+    filter: drop-shadow(4px 4px 4px grey);
+    animation: rotation 6s infinite ease-in-out;
+}
+
+/* .octo2 {
+    position: absolute;
+    height: 100px;
+    width: 131px;
+    background-image: url("./images/octopus1.png");
+    filter: drop-shadow(3px 3px 3px pink);
+
+} */
+
+/* .octo2 {
+    position: absolute;
+    height: 100px;
+    width: 131px;
+    background-image: url("./images/octopus1.png");
+    filter: drop-shadow(3px 3px 3px pink);
+    
+} */
+
+.survivor2 {
+    position: absolute;
+    height: 126px;
+    width: 130px;
+    background-image: url("./images/bubblegirl1.png");
+    filter: drop-shadow(3px 3px 3px skyblue);
+    animation: rotation 3s linear;
+    opacity: 0.6;
+}
+
+/**
+* memo LEVEL 3 BADDYS **********/
+
+.grover {
+    position: absolute;
+    height: 119px;
+    width: 275px;
+    background-image: url("./images/grover2.png");
+    filter: drop-shadow(3px 3px 3px pink);
+}
+
+/* .mime {
+    position: absolute;
+    height: 145px;
+    width: 76px;
+    background-image: url("./images/mime2.png");
+    animation: rotation 4s linear infinite;
+    filter: drop-shadow(1px 1px 1px yellow);
+}
+
+.mime2 {
+    position: absolute;
+    height: 159px;
+    width: 130px;
+    background-image: url("./images/mime3.png");
+
+    filter: drop-shadow(1px 1px 1px yellow);
+} */
+
+.master {
+    position: absolute;
+    height: 225px;
+    width: 106px;
+    background-image: url("./images/master3.png");
+
+    filter: drop-shadow(2px 2px 2px yellow);
+}
+
+.tiger {
+    position: absolute;
+    height: 126px;
+    width: 200px;
+    background-image: url("./images/tiger1.png");
+
+    filter: drop-shadow(2px 2px 2px yellow);
+}
+
+
+
+.monkey2 {
+    position: absolute;
+    height: 147px;
+    width: 150px;
+    background-image: url("./images/monk.png");
+    filter: drop-shadow(3px 3px 3px grey);
+}
+
+.mcd {
+    position: absolute;
+    height: 137px;
+    width: 125px;
+    background-image: url("./images/mcd2.png");
+    filter: drop-shadow(3px 3px 3px grey);
+    animation: rotation2 5s ease-in-out infinite;
+}
+
+.doughnut {
+    position: absolute;
+    height: 92px;
+    width: 100px;
+    background-image: url("./images/doughnut.png");
+    filter: drop-shadow(3px 3px 3px pink);
+    animation: rotation 9s linear infinite;
+}
+
+.cone {
+    position: absolute;
+    height: 100px;
+    width: 84px;
+    background-image: url("./images/cone2.png");
+    filter: drop-shadow(3px 3px 3px pink);
+    animation: rotation 1s linear infinite;
+}
+
+.popcorn {
+    position: absolute;
+    height: 116px;
+    width: 90px;
+    background-image: url("./images/popcorn2.png");
+    filter: drop-shadow(3px 3px 3px pink);
+    animation: rotation2 6s linear infinite;
+}
+
+/* .monkey3 {
+    position: absolute;
+    height: 138px;
+    width: 175px;
+    background-image: url("./images/flying-monkey.png");
+    filter: drop-shadow(3px 3px 3px pink);
+    
+} */ 
+
+.cage {
+    position: absolute;
+    height: 158px;
+    width: 111px;
+    background-image: url("./images/cage4.png");
+    /* filter: drop-shadow(3px 3px 3px pink); */
+    
+}
+
+/**
+* memo ****SCOREBOARD MSGS BTNS HEALTH ETC ***********/
+
+
+.progress {
+    position: absolute;
+    z-index: 200;
+    top: 5%;
+    margin-left: auto;
+
+    width: 100%;
+
+
+}
+
+.startContain {
+    margin-top: 5%;
+
+    width: 100%; /*test*/
+    height: 90vh;
+    background-image: url("./images/tvintro3.png");
+    /*background-size: auto;*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+
+    /* background-color: grey; */
+    display: inline-block;
+}
+
+/* .splash {
+    margin-top: 5%;
+
+    width: 100%;
+    height: 100%;
+    background-image: url("./images/tvintro3.png");
+    background-size: cover;
+    background-color: red;
+    display: inline-block;
+
+} */
+@keyframes intro {
+    0%{ opacity: 1}
+    20%{ opacity: 0.8}
+    40%{ opacity: 0.6}
+    60%{ opacity: 0.4}
+    80%{ opacity: 0.2}
+    100%{ opacity: 0}
+
+}
+
+/* .startScreenBtn {
+
+    box-shadow: inset 1px 0px 0px 0px #97c4fe;
+    background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color: #3d94f6;
+    border-radius: 6px;
+    border: 1px solid #337fed;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Trebuchet MS;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 13px 76px;
+    text-decoration: none;
+    text-shadow: 9px 12px 8px #1570cd;
+}
+
+
+.startScreenBtn:hover {
+    background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+    background-color: #1e62d0;
+} */
+
+
+
+.messageBubble {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 210;
+
+    box-shadow: inset 0px 0px 0px 0px #f29c93;
+    background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+    background-color: #fe1a00;
+    border-radius: 8px;
+    border: 1px solid #d83526;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: 'Bangers', cursive;
+    font-size: 1.8em;
+    letter-spacing: 0.06em;
+    text-align: center;
+
+    /*font-weight:bold; */
+    padding: 10px 70px;
+    text-decoration: none;
+    text-shadow: 3px 3px grey;
+    box-shadow: 4px 4px 4px grey;
+
+
+    /* position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    padding: 20px;
+
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Bangers', cursive;
+    font-size: 2.2em;
+    color: white;
+    text-shadow: 3px 3px grey;
+    background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color: #3d94f6;
+    box-shadow: 4px 4px 4px grey;
+    border-radius: 5%;
+    z-index: 202; */
+}
+
+
+
+
+
+/* .level2start,
+.messageRetry {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    padding: 20px;
+
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Bangers', cursive;
+    font-size: 2.3em;
+    color: white;
+    text-shadow: 3px 3px grey;
+    box-shadow: 4px 4px 4px grey;
+    background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+    background-color: #3d94f6;
+    border-radius: 10%;
+    z-index: 202;
+} */
+
+/* .msghider{
+    position: absolute;
+    
+    width: 60%;
+    height: 50%;
+} */
+
+/* .btnbackground{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    padding: 20px;
+
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Bangers', cursive;
+    font-size: 2.3em;
+    color: white;
+    text-shadow: 3px 3px grey;
+    box-shadow: 4px 4px 4px grey;    
+    
+    background: linear-gradient(to bottom, red 5%, rgb(145, 61, 61) 100%);
+    background-color: rgb(255, 42, 4)
+} */
+
+
+.retry,
+.startL2,
+.startL3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    padding: 5px 20px 5px 20px;
+    cursor: pointer;
+
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Bangers', cursive;
+    font-size: 2.3em;
+    color: white;
+    text-shadow: 3px 3px grey;
+    box-shadow: 4px 4px 4px grey;
+
+    background: linear-gradient(to bottom, rgb(126, 86, 86)(100, 67, 67) 5%, rgb(170, 43, 43) 100%);
+    background-color: rgb(255, 42, 4);
+}
+
+.startL2:hover,
+.startL3:hover,
+.messageStartL3:hover,
+.messageRetry:hover,
+.messageStartL2:hover,
+.messageStartL3:hover,
+.startScreenBtn:hover,
+.messageRetry:hover,
+.retry:hover,
+.retry:active {
+    background: linear-gradient(to bottom, #fc0606 5%, #d16565 100%);
+    background-color: rgb(190, 100, 100);
+}
+
+.startScreenBtn {
+position: absolute;
+top: 43%;
+left: 44%;
+transform: translate(-50%, -50%);
+z-index: 200;
+padding: 5px 20px 5px 20px;
+cursor: pointer;
+
+text-align: center;
+vertical-align: middle;
+font-family: 'Bangers', cursive;
+font-size: 2.3em;
+color: white;
+text-shadow: 3px 3px grey;
+box-shadow: 4px 4px 4px grey;
+
+background: linear-gradient(to bottom, rgb(126, 86, 86)(100, 67, 67) 5%, rgb(170, 43, 43) 100%);
+background-color: rgb(255, 42, 4);
+opacity: 0.6;
+
+}
+
+/* 
+.messageStartL2 {
+    position: absolute;
+    text-align: center;
+
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.6em;
+    color: black;
+    background-color: white;
+    border-radius: 5%;
+    z-index: 202;
+
+} */
+
+.introL1 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    top: 50%;
+    left: 50%;
+    font-family: 'Galindo', cursive;
+    font-size: 3em;
+    color:red;
+    text-shadow: 2px 2px white;
+    animation: fade 4s linear;
+}
+
+@keyframes fade {
+    0%{ opacity: 1}
+    20%{ opacity: 0.8}
+    40%{ opacity: 0.6}
+    60%{ opacity: 0.4}
+    80%{ opacity: 0.2}
+    100%{ opacity: 0}
+
+}
