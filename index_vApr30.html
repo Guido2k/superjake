@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP PLUG-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- GOOGLE FONTS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Galindo&display=swap" rel="stylesheet">
+
+    <!-- CSS STYLESHEET LINK -->
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+
+    <title>SuperJake</title>
+
+</head>
+
+<body>
+
+    <audio src="./sounds/negative.wav" preload></audio>
+    <audio src="./sounds/powerup1.wav" preload></audio>
+    <audio src="./sounds/heroism.ogg" preload></audio>
+    <audio src="./sounds/bat.wav" preload></audio>
+    <audio src="./sounds/pig.wav" preload></audio>
+    <audio src="./sounds/level1.wav" preload></audio>
+    <audio src="./sounds/menacebg.ogg" preload></audio>
+    <audio src="./sounds/damage.wav" preload></audio>
+    <audio src="./sounds/octsound.wav" preload></audio>
+    <audio src="./sounds/impact14.wav" preload></audio>
+    <audio src="./sounds/ray.wav" preload></audio>
+    <audio src="./sounds/die.wav" preload></audio>
+    <audio src="./sounds/surv.wav" preload></audio>
+    <audio src="./sounds/witch.ogg" preload></audio>
+    <audio src="./sounds/cage.wav" preload></audio>
+    <audio src="./sounds/endgame.ogg" preload></audio>
+
+    <div class="score">
+
+    </div>
+
+
+    <div class="progress">
+        <div class="progress-bar1 bg-success progress-bar-striped progress-bar-animated health100" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+            aria-valuemax="100" style="width:100%">
+
+        </div>
+
+        <div class="progress-bar2 bg-success progress-bar-striped progress-bar-animated health83 hide" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+            aria-valuemax="100" style="width:90%">
+
+        </div>
+
+
+
+        <div class="progress-bar3 bg-success progress-bar-striped progress-bar-animated health66 hide" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+            aria-valuemax="100" style="width:80%">
+
+        </div>
+        <div class="progress-bar4 bg-warning progress-bar-striped progress-bar-animated health50 hide" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+            aria-valuemax="100" style="width:70%">
+
+        </div>
+        <div class="progress-bar5 bg-warning progress-bar-striped progress-bar-animated health33 hide" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+            aria-valuemax="100" style="width:60%">
+
+        </div>
+
+        <div class="progress-bar6 bg-warning progress-bar-striped progress-bar-animated health16 hide" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+            aria-valuemax="100" style="width:50%">
+
+        </div>
+
+        <div class="progress-bar7 bg-warning progress-bar-striped progress-bar-animated health66 hide" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+            aria-valuemax="100" style="width:40%">
+
+        </div>
+        <div class="progress-bar8 bg-danger progress-bar-striped progress-bar-animated health50 hide" role="progressbar" aria-valuenow="30" aria-valuemin="0"
+            aria-valuemax="100" style="width:30%">
+
+        </div>
+        <div class="progress-bar9 bg-danger progress-bar-striped progress-bar-animated health33 hide" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+            aria-valuemax="100" style="width:20%">
+
+        </div>
+
+        <div class="progress-bar10 bg-danger progress-bar-striped progress-bar-animated health16 hide" role="progressbar" aria-valuenow="10" aria-valuemin="0"
+            aria-valuemax="100" style="width:10%">
+
+        </div>
+
+    </div>
+
+    <div class="game">
+        <div class="startScreen">
+            <div class="startContain">
+                <div class="startScreenBtn">START</div>
+            </div>
+
+        </div>
+
+
+        <div class="bubble hide">
+            <div class="messageBubble hide"></div>
+        </div>
+
+        <div class="startL2 hide">
+            <div class="messageStartL2 hide"></div>
+        </div>
+
+        <div class="startL3 hide">
+            <div class="messageStartL3 hide"></div>
+        </div>
+
+        <div class="retry hide">
+            <div class="messageRetry hide"></div>
+        </div>
+
+        <div class="introL1 hide ">
+            <div class="messageIntroL1 hide"></div>
+        </div>
+
+        <div class="winnerScreen hide ">
+            <div class="winners hide"></div>
+        </div>
+
+        <div class="gameArea">
+
+        </div>
+
+    </div>
+
+    <script>
+        /**
+         * memo *** SETUP HEALTH BAR ******************** */
+
+
+        const progressbar1 = document.querySelector(".progress-bar1");
+        const progressbar2 = document.querySelector(".progress-bar2");
+        const progressbar3 = document.querySelector(".progress-bar3");
+        const progressbar4 = document.querySelector(".progress-bar4");
+        const progressbar5 = document.querySelector(".progress-bar5");
+        const progressbar6 = document.querySelector(".progress-bar6");
+        const progressbar7 = document.querySelector(".progress-bar7");
+        const progressbar8 = document.querySelector(".progress-bar8");
+        const progressbar9 = document.querySelector(".progress-bar9");
+        const progressbar10 = document.querySelector(".progress-bar10");
+
+
+        progressbar1.classList.remove(".hide");
+        progressbar2.classList.add(".hide");
+        progressbar3.classList.add(".hide");
+        progressbar4.classList.add(".hide");
+        progressbar5.classList.add(".hide");
+        progressbar6.classList.add(".hide");
+        progressbar7.classList.add(".hide");
+        progressbar8.classList.add(".hide");
+        progressbar9.classList.add(".hide");
+        progressbar10.classList.add(".hide");
+
+
+        /**
+         * memo ****** SETUP SOUNDS ******************* **/
+
+        const myAudio = document.createElement("audio");
+        myAudio.src = "./sounds/heroism.ogg";
+        const myAudio2 = document.createElement("audio");
+        myAudio2.src = "./sounds/negative.wav";
+        const myAudio3 = document.createElement("audio");
+        myAudio3.src = "./sounds/powerup1.wav";
+        const myAudio4 = document.createElement("audio");
+        myAudio4.src = "./sounds/bat.wav";
+        const myAudio5 = document.createElement("audio");
+        myAudio5.src = "./sounds/pig.wav";
+        const myAudio6 = document.createElement("audio");
+        myAudio6.src = "./sounds/level1.wav";
+        const myAudio7 = document.createElement("audio");
+        myAudio7.src = "./sounds/menacebg.ogg";
+        const myAudio8 = document.createElement("audio");
+        myAudio8.src = "./sounds/damage.wav";
+        const myAudio9 = document.createElement("audio");
+        myAudio9.src = "./sounds/octsound.wav";
+        const myAudio10 = document.createElement("audio");
+        myAudio10.src = "./sounds/impact14.wav";
+        const myAudio11 = document.createElement("audio");
+        myAudio11.src = "./sounds/ray.wav";
+        const myAudio12 = document.createElement("audio");
+        myAudio12.src = "./sounds/circus.ogg";
+        const myAudio13 = document.createElement("audio");
+        myAudio13.src = "./sounds/die.wav";
+        const myAudio14 = document.createElement("audio");
+        myAudio14.src = "./sounds/surv.wav";
+        const myAudio15 = document.createElement("audio");
+        myAudio15.src = "./sounds/witch.ogg";
+        const myAudio16 = document.createElement("audio");
+        myAudio16.src = "./sounds/cage.wav";
+        const myAudio17 = document.createElement("audio");
+        myAudio17.src = "./sounds/endgame.ogg";
+
+        const score = document.querySelector(".score");
+        //const lives = document.querySelector(".lives");
+        const bad = document.querySelector(".bad");
+        const bad2 = document.querySelector(".bad2");
+        const bad3 = document.querySelector(".bad3");
+        const beans = document.querySelector(".beans");
+        const bottombad = document.querySelector(".botbad");
+
+        const badL2a = document.querySelector(".badL2a");
+        const badL2b = document.querySelector(".badL2b");
+        const badL2c = document.querySelector(".badL2c");
+        const ray2 = document.querySelector(".ray2");
+        const survivor = document.querySelector(".survivor");
+        const survivor2 = document.querySelector(".survivor2");
+
+        const grover = document.querySelector(".grover");
+        const mcd = document.querySelector(".mcd");
+        const master = document.querySelector(".master");
+        const tiger = document.querySelector(".tiger");
+
+        const gameArea = document.querySelector(".gameArea");
+        const gameArea2 = document.querySelector(".gameArea2");
+        const gameArea3 = document.querySelector(".gameArea3");
+        const winnerScreen = document.querySelector(".winnerScreen")
+
+        const startScreen = document.querySelector(".startScreen");
+
+        const introL1 = document.querySelector(".introL1");
+        const messageIntroL1 = document.querySelector(".messageIntroL1");
+
+        /**
+         * memo *** EVENT LISTENERS ************** *** ** **** */
+
+        const startScreenBtn = document.querySelector(".startScreenBtn");
+        startScreenBtn.addEventListener("click", start);
+
+        const retry = document.querySelector(".retry");
+        retry.addEventListener("click", reload);
+
+        const startL2 = document.querySelector(".startL2");
+        startL2.addEventListener("click", start2);
+
+        const startL3 = document.querySelector(".startL3");
+        startL3.addEventListener("click", start3);
+
+        //messageRetry.addEventListener("click", start);
+        //messageStartL2.addEventListener("click", start2);
+
+        const bubble = document.querySelector(".bubble");
+        const messageBubble = document.querySelector(".messageBubble");
+        const messageRetry = document.querySelector(".messageRetry");
+        const messageStartL2 = document.querySelector(".messageStartL2");
+        const messageStartL3 = document.querySelector(".messageStartL3");
+
+        let turd = document.createElement("div");
+        let boundturd = turd.getBoundingClientRect();
+        let boundGameArea = gameArea.getBoundingClientRect();
+
+        document.addEventListener("keydown", pressOn);
+        document.addEventListener("keyup", pressOff);
+
+        let keys = {};
+        let player = {};
+
+/**
+* alt refresh game on retry "click"  **** *** ***** * */
+       
+        function reload(){
+            location.reload();
+            return false;
+        }
+
+
+        /**
+         * memo *L1 START *clear sound/area, L1spacing, call to playgame**/
+
+
+        function start() {
+            
+            gameArea.innerHTML = "";
+
+            myAudio.pause();
+            myAudio6.pause();
+            myAudio7.pause();
+            myAudio12.pause();
+
+            player.speed = 5;
+            player.score = 0;
+            player.lives = 1000;
+            player.level = 1;
+            player.levelName = "\"Refried\"";
+            player.survivor = 0;
+
+            player.inplay = true;
+
+            startScreen.classList.add("hide");
+            bubble.classList.add("hide");
+            retry.classList.add("hide");
+
+            //introL1.classList.remove("hide");
+
+            //messageBubble.classList.add("hide");
+            //messageRetry.classList.remove("hide");
+            //messageRetry.classList.add("hide");
+            //messageStartL2.classList.add("hide"); // startL2 btn
+
+
+            let turd = document.createElement("div");
+
+            turd.setAttribute("class", "turd");
+            gameArea.classList.remove("gameArea2");
+            gameArea.classList.remove("gameArea3");
+            gameArea.appendChild(turd);
+            player.x = turd.offsetLeft;
+            player.y = turd.offsetTop;
+
+
+            player.bad = 0;
+            player.bad2 = 0;
+            player.bad3 = 0;
+            player.good = 0;
+            player.good2 = 0;
+
+            player.badL2a = 0;
+            player.surv = 0;
+
+            /////L1 SPACING BAD1   ///////////////
+
+            let spacing = Math.floor(Math.random() * 300) + 300;
+            let howMany = 5//Math.floor((gameArea.offsetWidth) / spacing) + 1;
+            for (let x = 0; x < howMany; x++) {
+
+                addBad(player.bad * spacing);
+
+            }
+
+            //////L1 SPACING BAD2    bee/fly /////////////
+
+            let spacing2 = Math.floor(Math.random() * 400) + 200;
+            let howMany2 = 5//Math.floor((gameArea.offsetWidth) / spacing2);
+            for (let x = 0; x < howMany2; x++) {
+
+                addBad2(player.bad2 * spacing2);
+
+            }
+
+            //////L1 SPACING BAD 3    BAT //////////////////
+
+            let spacing3 = Math.floor(Math.random() * 400) + 600;
+            let howMany3 = 2
+            for (let x = 0; x < howMany3; x++) {
+
+                addBad3(player.bad3 * spacing3);
+
+            }
+
+            ////L1 SPACING GOOD 1   ////////////////////////
+
+            let spacing4 = Math.floor(Math.random() * 800) + 333;
+            let howMany4 = Math.floor((gameArea.offsetWidth) / spacing4);
+            for (let x = 0; x < howMany4; x++) {
+
+                addGood(player.good * spacing4);
+
+            }
+
+            /////L1  SPACING GOOD2 // BOTTOM BAD ////////////
+
+            let spacing5 = Math.floor(Math.random() * 800) + 250;
+            let howMany5 = 2 //Math.floor((gameArea.offsetWidth) / spacing5);
+            for (let x = 0; x < howMany5; x++) {
+
+                addGood2(player.good2 * spacing5);
+
+            }
+
+            ////L1 SPACING SURVIVOR (bottom up)   ////
+
+            let spacing6 = Math.floor(Math.random() * 800) + 800;
+            let howMany6 = 1 //Math.floor((gameArea.offsetWidth) / spacing6);
+            for (let x = 0; x < howMany6; x++) {
+
+                addSurvivor(player.surv * spacing6);
+
+            }
+
+            window.requestAnimationFrame(playGame);
+        }
+
+        /**
+         * memo LEVEL 1 ADD BAD / GOOD CHARS *******************/
+
+
+        ////L1 ADD BAD 1  (PIG/ BARNEY) ////////////////////////////
+
+        function addBad(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.bad++;
+
+            let bad1 = document.createElement("div");
+            bad1.start = startPos + totalWidth;
+            bad1.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+
+            let randomBean = Math.floor(Math.random() * 10) + 1;
+            console.log(randomBean)
+            if (randomBean <= 5) {
+                bad1.classList.add("bad") // Test bean randomizer
+            } else if (randomBean > 5) {
+                bad1.classList.add("barny")
+            }    
+            
+
+            bad1.y = bad1.style.top;
+            bad1.x = bad1.start;
+            bad1.id = player.bad;
+
+            // player.bad = player.bad + 3
+
+            gameArea.appendChild(bad1);
+
+        }
+
+        ////// L1 ADD BAD2  2nd enemy (BEE) //////////
+
+        function addBad2(startPos) {
+
+            // totalHeight = gameArea.offsetHeight;
+            // totalWidth = gameArea.offsetWidth;
+
+            player.bad2++;
+
+            ////ENEMY SETUP negative direction bad2//////
+
+            let bad2 = document.createElement("div");
+            bad2.start = startPos;
+            bad2.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+
+            let randomBean = Math.floor(Math.random() * 10) + 1;
+            console.log(randomBean)
+            if (randomBean <= 3) {
+                bad2.classList.add("bad2") // Test bean randomizer
+            } else if (randomBean > 3 && randomBean < 7) {
+                bad2.classList.add("fly")
+
+            } else if (randomBean >= 7) {
+                bad2.classList.add("dragon");
+            }
+
+            bad2.y = bad2.style.top;
+            bad2.x = bad2.start;
+
+            gameArea.appendChild(bad2);
+
+        }
+
+        ////// L1 ADD BAD3  3rd Enemy (BAT)  //////////
+
+        function addBad3(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.bad3++;
+
+            let bad3 = document.createElement("div");
+            bad3.start = startPos + totalWidth;
+            bad3.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+            bad3.classList.add("bad3");
+
+            bad3.y = bad3.style.top;
+            bad3.x = bad3.start;
+
+            gameArea.appendChild(bad3);
+
+        }
+
+
+        //// L1 ADD GOOD POWERUP  (beans/food)   //////// 
+
+        function addGood(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.good++;
+
+            let beans = document.createElement("div");
+            beans.start = startPos + totalWidth;
+
+            //hz spacing for vertical items // 
+
+            beans.style.left = (Math.floor(Math.random() * totalWidth)) + "px";
+            let randomBean = Math.floor(Math.random() * 10) + 1;
+            console.log(randomBean)
+            if (randomBean <= 2) {
+                beans.classList.add("beans2") // Test bean randomizer
+            } else if (randomBean > 2 && randomBean < 5) {
+                beans.classList.add("hotdog")
+            } else if (randomBean >= 5 && randomBean < 7) {
+                beans.classList.add("beans")
+            } else if (randomBean >= 7) {
+                beans.classList.add("taco")
+            }
+
+            beans.x = beans.style.left;
+            beans.y = beans.start;
+
+            gameArea.appendChild(beans);
+
+        }
+
+        //// L1 BOTTOM BAD CHAR 2  (BAD bottom to top)  /////
+
+        function addGood2(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.good2++;
+
+            let bottombad = document.createElement("div");
+            bottombad.start = startPos + totalWidth;
+
+            /// randomize start hz position for vertical fallers /// 
+
+            bottombad.style.left = (Math.floor(Math.random() * totalWidth)) + "px";
+            bottombad.classList.add("botbad");
+
+            bottombad.x = bottombad.style.left;
+            bottombad.y = bottombad.start;
+
+            gameArea.appendChild(bottombad);
+
+        }
+
+        /// L1 ADD SURVIVOR ///////////////////////////////
+
+        function addSurvivor(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            //player.survivor = player.survivor +1;
+            player.surv++
+            let surv = document.createElement("div");
+            surv.start = (startPos + totalHeight) *2;
+
+            /// randomize start hz position for vertical fallers /// 
+
+            surv.style.left = (Math.floor(Math.random() * (totalWidth * 0.9))) + "px";
+            surv.classList.add("survivor");
+
+            surv.x = surv.style.left;
+            surv.y = surv.start;
+
+            gameArea.appendChild(surv);
+
+        }
+
+
+        /**
+         * memo ****LEVEL 1 * MOVE BAD CHARS LEVEL 1 *******/
+
+
+        function moveBad(turd) {
+
+            /////L1 BAD1 CHAR MOVE  (MOVE PIG)  /////////////////
+
+            let lines = document.querySelectorAll(".bad, .barny");
+            let counter = 0;
+            lines.forEach(function (item) {
+                
+                item.x -= (Math.floor(Math.random() * 4) + 4); //player.speed +
+
+                item.style.left = item.x + "px";
+                if (item.x < 0) {
+                    item.parentElement.removeChild(item);
+                    counter++;
+                }
+
+                if (isCollide(item, turd)) {
+
+                    myAudio5.play()
+
+                    player.lives = player.lives - 2;
+                    if (player.lives <= 0) {
+                        playGameOver(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter; x++) {
+                addBad(0)
+            }
+
+            /////L1 MOVE BAD2 *****(bee)///////////////
+
+            let lines2 = document.querySelectorAll(".bad2, .fly, .dragon");
+            let counter2 = 0;
+            lines2.forEach(function (item2) {
+                
+                item2.x += (Math.floor(Math.random() * 6) + 6); //player.speed +
+                item2.style.left = item2.x + "px";
+                if (item2.x > totalWidth) {
+                    item2.parentElement.removeChild(item2);
+                    counter2++;
+
+                }
+                if (isCollide(item2, turd)) {
+                    myAudio8.play()
+
+                    player.lives = player.lives -1;
+                    if (player.lives <= 0) {
+                        playGameOver(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter2; x++) {
+                addBad2(0)
+            }
+
+            ////L1 MOVE BAD3 *****3rd enemy move BAT///
+
+            let lines3 = document.querySelectorAll(".bad3");
+            let counter3 = 0;
+            lines3.forEach(function (item3) {
+                
+                item3.x -= (Math.floor(Math.random() * 8) + 5); //player.speed +
+                item3.style.left = item3.x + "px";
+                if (item3.x < 0) {
+                    item3.parentElement.removeChild(item3);
+                    counter3++;
+
+                }
+                if (isCollide(item3, turd)) {
+                    myAudio4.play();
+                    player.lives = player.lives -1;
+                    if (player.lives <= 0) {
+                        playGameOver(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter3; x++) {
+                addBad3(0)
+            }
+
+            ///L1 MOVE POWERUP *** (BEANS/FOOD FOR HEALTH) /////////
+
+            let lines4 = document.querySelectorAll(".hotdog, .beans2, .beans, .taco");
+            let counter4 = 0;
+            lines4.forEach(function (item4) {
+               
+                item4.y -= (Math.floor(Math.random() * 8) + 8); //player.speed +
+                item4.style.top = item4.y + "px";
+                if (item4.y < 0) {
+                    item4.parentElement.removeChild(item4);
+                    counter4++;
+
+                }
+                if (isCollide(item4, turd)) {
+
+                    myAudio3.play();
+                    player.lives = player.lives + 4
+
+                }
+
+            })
+            for (let x = 0; x < counter4; x++) {
+                addGood(0)
+            }
+
+            /// L1 MOVE BOTTOM BAD (from bottom to top) // 
+
+
+            let lines5 = document.querySelectorAll(".botbad");
+            let counter5 = 0;
+            lines5.forEach(function (item5) {
+                
+                item5.y -= (Math.floor(Math.random() * 8) + 4); //player.speed +
+                item5.style.top = item5.y + "px";
+                if (item5.y < 0) {
+                    item5.parentElement.removeChild(item5);
+                    counter5++;
+
+                }
+                if (isCollide(item5, turd)) {
+
+                    myAudio2.play();
+
+                    player.lives = player.lives - 4;
+
+
+
+                    if (player.lives <= 0) {
+                        playGameOver(turd);
+                    }
+
+
+                }
+
+            })
+            for (let x = 0; x < counter5; x++) {
+                addGood2(0)
+            }
+
+            ////L1 MOVE SURVIVOR  ////////////////
+
+            let lines6 = document.querySelectorAll(".survivor");
+            let counter6 = 0;
+            lines6.forEach(function (item6) {
+                console.log(item6);
+                item6.y -= (Math.floor(Math.random() * 8) + 4); //player.speed +
+                item6.style.top = item6.y + "px";
+                if (item6.y < 0) {
+                    item6.parentElement.removeChild(item6);
+                    counter6++;
+
+                }
+                if (isCollide(item6, turd)) {
+
+                    myAudio14.play();
+
+                    player.survivor = player.survivor + 1;
+                    player.lives = player.lives +50;
+                    item6.parentElement.removeChild(item6);
+                    counter6++;
+                }
+
+            })
+            for (let x = 0; x < counter6; x++) {
+                addSurvivor(0)
+            }
+
+        }
+
+        /**
+         * ! ***** COLLISION MAIN ALGO DON"T TOUCH *********  */
+
+        function isCollide(a, b) {
+            let aRect = a.getBoundingClientRect();
+            let bRect = b.getBoundingClientRect();
+
+            return !(
+                (aRect.bottom < bRect.top) ||
+                (aRect.top > bRect.bottom) ||
+                (aRect.right < bRect.left) ||
+                (aRect.left > bRect.right)
+            )
+
+         
+        }
+
+        /**
+         * memo ***ALL LEVELS* playGame *   MAIN FUNCTION ****/
+
+
+        function playGame() {
+
+            if (player.inplay) {
+                let turd = document.querySelector(".turd");
+                let turd_left = document.querySelector(".turd_left");
+                let turd_up = document.querySelector(".turd_up");
+                let turd_dn = document.querySelector(".turd_dn");
+
+
+
+                //// LEVEL SPECIFIC (SOUND / MOVEMENT) ////
+
+                if (player.level == 1) {
+                    moveBad(turd);
+                    myAudio7.play();
+                } else if (player.level == 2) {
+
+                    moveBadL2(turd);
+                    myAudio7.pause();
+                    myAudio.play();
+
+                } else if (player.level == 3) {
+                    moveBadL3(turd);
+                    myAudio.pause();
+                    myAudio7.pause();
+                    myAudio12.play();
+
+                }
+
+
+                window.requestAnimationFrame(playGame);
+
+                /**
+                 * memo **** HERO MOVEMENT AND IMAGE CLASS CHANGES ON MVMT ******/
+
+                if (keys.ArrowLeft && player.x > 0) {
+                    player.x -= player.speed;
+                    turd.classList.remove("turd_up");
+                    turd.classList.remove("turd_dn");
+                    turd.classList.add("turd_left");
+                }
+
+                if (keys.ArrowRight && player.x < (gameArea.offsetWidth - 65)) {
+                    player.x += player.speed;
+                    turd.classList.remove("turd_up");
+                    turd.classList.remove("turd_left");
+                    turd.classList.remove("turd_dn");
+                    turd.classList.add("turd")
+                }
+
+                if ((keys.ArrowUp || keys.Space) && player.y >= 65) {
+                    player.y -= 20;
+                    turd.classList.remove("turd_left");
+                    turd.classList.remove("turd_dn");
+                    turd.classList.add("turd_up");
+                }
+
+                // experiment with 2 directions
+
+                if ((keys.ArrowUp && keys.ArrowLeft || keys.Space && keys.ArrowLeft) && (player.y >= 65 && player.x < (
+                        gameArea.offsetWidth - 65))) {
+                    player.y -= 2;
+                    turd.classList.add("turd_left");
+                    turd.classList.remove("turd_dn");
+                    turd.classList.remove("turd_up");
+                }
+
+
+
+                if (keys.ArrowDown && player.y < gameArea.offsetHeight - 60) {
+                    player.y += player.speed;
+                    turd.classList.add("turd_dn")
+                }
+                /**
+                 * alt * SNIPPET TO TURN OFF endgame off screen*/
+
+                // if(player.y < gameArea.offsetHeight -60) {  // if don't want offscreen//
+                player.y += (player.speed * 1.6); /////***GRAVITY SETTING ****////
+
+                /**
+                 * memo **SNIPPET FOR FALLING OFF SCREEN to END GAME  ***/
+
+
+                if (player.level == 1 && (player.y > gameArea.offsetHeight)) {
+                    console.log("game over");
+                    playGameOver();
+                } else if (player.level == 2 && (player.y > gameArea.offsetHeight)) {
+                    playGameOver2();
+                } else if (player.level == 3 && (player.y > gameArea.offsetHeight)) {
+                    playGameOver2();
+                }
+
+                turd.style.top = player.y + "px";
+                turd.style.left = player.x + "px";
+
+                player.score++;
+
+                /**
+                 * alt * SCOREBOARD DISPLAY*/
+
+                score.innerHTML = "HEALTH: " + player.lives + "&nbsp &nbsp &nbsp TIME: " + player.score +
+                    "&nbsp &nbsp &nbsp    LEVEL: " + player.level + "&nbsp" + player.levelName + "&nbsp &nbsp &nbsp SURVIVORS: " + player.survivor + "/20";
+
+
+                /**
+                 * memo ** "HEALTH" / PROGRESS BAR SNIPPET ** ** **** */
+
+                let progressbar1 = document.querySelector(".progress-bar1")
+                let progressbar2 = document.querySelector(".progress-bar2")
+                let progressbar3 = document.querySelector(".progress-bar3")
+                let progressbar4 = document.querySelector(".progress-bar4")
+                let progressbar5 = document.querySelector(".progress-bar5")
+                let progressbar6 = document.querySelector(".progress-bar6")
+                let progressbar7 = document.querySelector(".progress-bar7")
+                let progressbar8 = document.querySelector(".progress-bar8")
+                let progressbar9 = document.querySelector(".progress-bar9")
+                let progressbar10 = document.querySelector(".progress-bar10")
+
+
+
+                if (player.lives > 900) {
+                    progressbar1.classList.remove("hide");
+                    progressbar2.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar9.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+                } else if (player.lives <= 900 && player.lives > 800) {
+                    progressbar2.classList.remove("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar9.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+                } else if (player.lives <= 800 && player.lives > 700) {
+                    progressbar3.classList.remove("hide");
+                    progressbar2.classList.add("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar9.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+
+                } else if (player.lives <= 700 && player.lives > 600) {
+                    progressbar4.classList.remove('hide');
+                    progressbar2.classList.add("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar9.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+                } else if (player.lives <= 600 && player.lives > 500) {
+                    progressbar5.classList.remove('hide');
+                    progressbar2.classList.add("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar9.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+                } else if (player.lives <= 500 && player.lives > 400) {
+                    progressbar6.classList.remove('hide');
+                    progressbar2.classList.add("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar9.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+                } else if (player.lives <= 400 && player.lives > 300) {
+                    progressbar7.classList.remove('hide');
+                    progressbar2.classList.add("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar9.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+                } else if (player.lives <= 300 && player.lives > 200) {
+                    progressbar8.classList.remove('hide');
+                    progressbar2.classList.add("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar9.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+                } else if (player.lives <= 200 && player.lives > 100) {
+                    progressbar9.classList.remove('hide');
+                    progressbar2.classList.add("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar10.classList.add("hide");
+
+                } else if (player.lives <= 100) {
+                    progressbar10.classList.remove('hide');
+                    progressbar2.classList.add("hide");
+                    progressbar1.classList.add("hide");
+                    progressbar3.classList.add("hide");
+                    progressbar4.classList.add("hide");
+                    progressbar5.classList.add("hide");
+                    progressbar6.classList.add("hide");
+                    progressbar7.classList.add("hide");
+                    progressbar8.classList.add("hide");
+                    progressbar9.classList.add("hide");
+
+                }
+
+                /**
+                 * alt ghosted LEVEL INTROS ***   **** **** */
+                
+                
+                if(player.level == 1){
+                    introL1.innerHTML = "Level 1: Refried";
+                    introL1.classList.remove("hide");
+                }
+                //introL1.classList.remove("hide");
+                if (player.level == 1 && player.score >= 160) {
+                    introL1.classList.add("hide");
+                }
+
+                if (player.level == 2 && player.score >= 50) {
+                    introL1.innerHTML = "Level 2: Soggy Waters";
+                    introL1.classList.remove("hide");
+                }
+
+                if (player.level == 2 && player.score >= 190) {
+                    introL1.classList.add("hide");
+                }
+
+                if (player.level == 3 && player.score >= 50) {
+                    introL1.innerHTML = "Level 3: UnCaged"
+                    introL1.classList.remove("hide");
+                }
+
+                if (player.level == 3 && player.score >= 190) {
+                    introL1.classList.add("hide");
+                }
+
+
+                /**
+                 * memo ** SCORING TRIGGERS for LEVEL CHANGE **** *********  */
+
+                if (player.survivor >= 20 && player.score >= 400 && player.level == 1) {
+                    player.level ==2;
+                    level2();
+
+                } else if (player.survivor >= 20 && player.score >= 400 && player.level == 2) {
+                    player.level == 3;
+                    level3();
+                }else if (player.survivor >=20 && player.level == 3){
+                    winner();
+
+                }
+
+
+            }
+
+        }
+
+        /**
+         * memo ** LEVEL 2 SETUP start screen Static reset ******  */
+
+        function level2() {
+            player.inplay = false;
+            player.score = 000;
+            player.y = 80;
+            player.x = 180;
+            player.level = 2;
+            player.survivor = 0;
+
+            myAudio.pause();
+            myAudio6.pause();
+            myAudio7.pause();
+
+            let turd = document.querySelector(".turd");
+            turd.classList.add("turd_dn");
+
+            messageRetry.classList.add("hide");
+
+            //retry.classList.remove("hide");
+
+            /// END OF LEVEL MSG and Scoring display 
+            bubble.classList.remove("hide");
+            messageBubble.classList.remove("hide");
+            messageBubble.innerHTML = "You Survived Level 1 Newb! <br> All Civilian Survivors Rescued <br> Took You Long Enough!"
+
+            /// button LEVEL 2 start /////////////
+            messageStartL2.classList.remove("hide");
+
+            startL2.classList.remove("hide");
+            startL2.innerHTML = "START LEVEL 2 BRAH?";
+
+        }
+
+        /**
+         * memo ** LEVEL 3 SETUP start screen Static reset ******  */
+
+        function level3() {
+            player.inplay = false;
+            player.score = 000;
+            player.y = 80;
+            player.x = 180;
+            player.level = 3;
+            player.survivor = 0;
+
+            myAudio.pause();
+            myAudio6.pause();
+            myAudio7.pause();
+
+            let turd = document.querySelector(".turd");
+            turd.classList.add("turd_dn");
+
+            messageRetry.classList.add("hide");
+
+            //retry.classList.remove("hide");
+
+            /// END OF LEVEL MSG and Scoring display 
+            bubble.classList.remove("hide");
+            messageBubble.classList.remove("hide");
+            messageBubble.innerHTML = "Level 2: Mission Completed! <br> All Civilian Survivors Safe"
+
+            /// button LEVEL 3 start /////////////
+            messageStartL3.classList.remove("hide");
+
+            // startL2.classList.remove("hide");
+            // startL2.innerHTML = "START LEVEL 2 BRAH?";
+            startL3.classList.remove("hide");
+            startL3.innerHTML = "START LEVEL 3?"
+        }
+
+
+
+        /**
+         * memo ** L1 GAME OVER if fail on LEVEL 1 ****************  */
+
+
+        function playGameOver() {
+            player.inplay = false;
+            player.y -= 50;
+
+            myAudio6.pause();
+            myAudio.pause();
+            myAudio7.pause();
+            myAudio13.play();
+
+            let turd = document.querySelector(".turd");
+            turd.classList.add("deadTurd");
+
+            messageStartL2.classList.add("hide");
+
+            // scoring message / text bubble ////////
+            bubble.classList.remove("hide");
+            messageBubble.classList.remove("hide");
+            messageBubble.innerHTML = "GAME OVER NEWB!! <br> You Failed Level " + player.level + "<br>" + player.survivor + "/20 Civilians Rescued :(";
+
+
+            // Retry message   /////////////////////
+            messageRetry.classList.remove("hide");
+
+            retry.classList.remove("hide");
+            retry.innerHTML = "RETRY??";
+        }
+
+        /**
+         * memo ** L2 GAME OVER if fail, L3 as well(no changes??)  ** **  */
+
+        function playGameOver2() {
+            player.inplay = false;
+            player.y -= 50;
+
+            myAudio.pause();
+            myAudio6.pause();
+            myAudio7.pause();
+            myAudio13.play();
+
+            let turd = document.querySelector(".turd");
+            turd.classList.add("deadTurd");
+            messageStartL2.classList.add("hide");
+
+
+            messageRetry.classList.remove("hide");
+            //messageRetry.classList.add("retry2")
+
+            retry.classList.remove("hide");
+            retry.classList.add("retry2")
+            retry.innerHTML = "RETRY??";
+
+            ///// scoring message / text bubble ////////
+            bubble.classList.remove("hide");
+            messageBubble.classList.remove("hide");
+            messageBubble.innerHTML = "NOT GOOD ENUFF BRAH!! <br>" + player.survivor + "/20 Civilian Survivors Rescued :( <br> Take a break, ask mom to cook up <br> some chicken fingers and try again later"
+        }
+
+        function winner() {
+            player.inplay = false;
+            player.y -= 50;
+            
+            myAudio.pause();
+            myAudio6.pause();
+            myAudio7.pause();
+            myAudio13.pause();
+            myAudio12.pause();
+
+            myAudio17.play();
+
+            gameArea.innerHTML = '';
+            winnerScreen.classList.remove("hide");
+
+            ///// scoring message / text bubble ////////
+            bubble.classList.remove("hide");
+            messageBubble.classList.remove("hide");
+            messageBubble.innerHTML = "!CONGRATS! <br> U BEAT THE GAME BRAH!!"
+
+
+            messageStartL2.classList.add("hide");
+            
+            //gameArea3.classList.add("hide");
+            
+
+            //player.grover.classList.add("hide");
+            //messageRetry.classList.remove("hide");
+            //messageRetry.classList.add("retry2")
+            turd.classList.add("hide");
+            //retry.classList.remove("hide");
+            //retry.classList.add("retry2")
+            //retry.innerHTML = "RETRY??";
+
+            
+        }
+      
+
+        /**
+         * ! ** KEYPRESS SNIPPET (DON"T TOUCH ) ****** ******  */
+
+        function pressOn(e) {
+            e.preventDefault();
+            keys[e.code] = true;
+            
+        }
+
+        function pressOff(e) {
+            keys[e.code] = false;
+            
+        }
+
+        /**
+         * memo ** L2 START (clear area/reset prior to playgame2) LEVEL 2   */
+
+        function start2() {
+            
+            player.inplay = true;
+
+            gameArea.innerHTML = "";
+            player.score = 0;
+            player.score++;
+            player.lives = 1000;
+
+            player.level = 2;
+            player.levelName = "\"Soggy Waters\"";
+            player.survivor = 0;
+
+            bubble.classList.add("hide");
+            messageBubble.classList.add("hide");
+            messageRetry.classList.add("hide");
+            //message2.classList.add("hide"); // retry btn
+            messageStartL2.classList.add("hide"); // startL2 btn
+            startScreen.classList.add("hide");
+
+
+            ////LEVEL 2 SPECIFIC  CHANGES /////
+            gameArea.classList.add("gameArea2");
+
+            startL2.classList.add("hide");
+
+
+            /////END LEVEL2 SPEC CHANGES //////
+
+
+            let turd = document.createElement("div");
+
+            turd.setAttribute("class", "turd");
+
+            gameArea.appendChild(turd);
+            player.x = turd.offsetLeft;
+            player.y = turd.offsetTop;
+
+            player.bad = 0;
+            player.bad2 = 0;
+            player.bad3 = 0;
+            player.good = 0;
+            player.good2 = 0;
+
+            player.badL2a = 0;
+            player.badL2b = 0;
+            player.badL2c = 0;
+            player.goodL2a = 0;
+            player.surv2 = 0;
+
+            ////L2 SPACING BAD1 (Shark)  ///////////////
+
+            let spacing8 = Math.floor(Math.random() * 600) + 350;
+            let howMany8 = 2 //Math.floor((gameArea.offsetWidth) / spacing6);
+            for (let x = 0; x < howMany8; x++) {
+
+                addBadL2a(player.badL2a * spacing8);
+
+            }
+
+            ///L2 SPACING BAD2     (JellY) /////////////
+
+            let spacing9 = Math.floor(Math.random() * 400) + 200;
+            let howMany9 = 5//Math.floor((gameArea.offsetWidth) / spacing9) + 3;
+            for (let x = 0; x < howMany9; x++) {
+
+                addBadL2b(player.badL2b * spacing9);
+
+            }
+
+            ///L2 SPACING BAD 3   (DRAY) /////////////////
+
+            let spacing10 = Math.floor(Math.random() * 400) + 600;
+            let howMany10 = 2
+            for (let x = 0; x < howMany10; x++) {
+
+                addBadL2c(player.badL2c * spacing10);
+
+            }
+
+            //L2  SPACING GOOD 1  (SHRIMp & salmon /////
+
+            let spacing11 = Math.floor(Math.random() * 800) + 600;
+            let howMany11 = 1 //Math.floor((gameArea.offsetWidth) / spacing4);
+            for (let x = 0; x < howMany11; x++) {
+
+                addGoodL2a(player.good * spacing11);
+
+            }
+
+            //L2  SPACING GOOD2 // BOTTOM BAD (oct0)////////
+
+            let spacing12 = Math.floor(Math.random() * 800) + 500;
+            let howMany12 = 2 //Math.floor((gameArea.offsetWidth) / spacing12);
+            for (let x = 0; x < howMany12; x++) {
+
+                addGoodL2b(player.good2 * spacing12);
+            }
+
+            //L2  SPACING SURVIVOR 2 ////////
+
+            let spacing13 = Math.floor(Math.random() * 800) + 800;
+            let howMany13 = 1 //Math.floor((gameArea.offsetWidth) / spacing13);
+            for (let x = 0; x < howMany13; x++) {
+
+                addSurvivor2(player.surv2 * spacing13);
+
+            }
+
+            window.requestAnimationFrame(playGame);
+        }
+
+        /**
+         * memo //// START LEVEL 3  STatic reset screen //////// //*/
+
+        function start3() {
+            
+            player.inplay = true;
+
+            gameArea.innerHTML = "";
+
+            player.score++;
+            player.lives = 1000;
+            player.score = 0;
+            player.level = 3;
+            player.levelName = "\"UnCaged\"";
+            player.survivor = 0;
+
+            startScreen.classList.add("hide");
+
+            bubble.classList.add("hide");
+            messageBubble.classList.add("hide");
+            messageRetry.classList.add("hide");
+
+
+            messageStartL2.classList.add("hide"); // startL2 btn
+            startL2.classList.add("hide");
+            messageStartL3.classList.add("hide");
+
+
+
+            ////LEVEL 3 SPECIFIC  CHANGES /////
+            gameArea.classList.add("gameArea3");
+            startL3.classList.add("hide");
+
+            /////END LEVEL3 SPEC CHANGES //////
+
+
+            let turd = document.createElement("div");
+
+            turd.setAttribute("class", "turd");
+
+            gameArea.appendChild(turd);
+            player.x = turd.offsetLeft;
+            player.y = turd.offsetTop;
+
+            player.bad = 0;
+            player.bad2 = 0;
+            player.bad3 = 0;
+            player.good = 0;
+            player.good2 = 0;
+
+            player.badL2a = 0;
+            player.badL2b = 0;
+            player.badL2c = 0;
+            player.goodL2a = 0;
+            player.surv2 = 0;
+
+            player.grover = 0;
+            player.monkey = 0;
+            player.mime = 0;
+            player.treats = 0;
+            player.mcd = 0;
+            player.surv3 = 0;
+            player.cage = 0;
+
+            ////L3 SPACING BAD1 (Grover)  /////////////
+
+            let spacing14 = Math.floor(Math.random() * 600) + 350;
+            let howMany14 = 2 //Math.floor((gameArea.offsetWidth) / spacing6);
+            for (let x = 0; x < howMany14; x++) {
+
+                addGrover(player.grover * spacing14);
+
+            }
+
+            ///L3 SPACING BAD2     (MIMES) /////////////
+
+            let spacing15 = Math.floor(Math.random() * 400) + 750;
+            let howMany15 = Math.floor((gameArea.offsetWidth) / spacing15);
+            for (let x = 0; x < howMany15; x++) {
+
+                addMime(player.mime * spacing15);
+
+            }
+
+            ///L3 SPACING     (treats) ////////
+
+            let spacing16 = Math.floor(Math.random() * 400) + 600;
+            let howMany16 = 1
+            for (let x = 0; x < howMany16; x++) {
+
+                addTreats(player.treats * spacing16);
+
+            }
+
+            ////L3 SPACING MCD    /////////////
+
+            let spacing17 = Math.floor(Math.random() * 600) + 350;
+            let howMany17 = 2 //Math.floor((gameArea.offsetWidth) / spacing6);
+            for (let x = 0; x < howMany17; x++) {
+
+                addMcd(player.mcd * spacing17);
+
+            }
+            
+
+            //L3  SPACING GOOD2 // BOTTOM BAD (oct0)////////
+
+            let spacing12 = Math.floor(Math.random() * 800) + 500;
+            let howMany12 = Math.floor((gameArea.offsetWidth) / spacing12)+1;
+            for (let x = 0; x < howMany12; x++) {
+
+                addCage(player.cage * spacing12);
+            }
+
+            //L3  SPACING SURVIVOR 2 ////////
+
+            let spacing13 = Math.floor(Math.random() * 800) + 800;
+            let howMany13 = 1 //Math.floor((gameArea.offsetWidth) / spacing13);
+            for (let x = 0; x < howMany13; x++) {
+
+                addSurvivor3(player.surv3 * spacing13);
+
+            }
+
+            window.requestAnimationFrame(playGame);
+        }
+
+
+        /**
+         * memo ** L2 ADDBAD LEVEL 2  ********* ***** **/
+
+        //// L2 ADDBADD L2a ENEMY (SHARK)   ///////////
+
+
+        function addBadL2a(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.badL2a++;
+
+            let bads1 = document.createElement("div");
+            bads1.start = startPos + totalWidth;
+            bads1.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+
+
+            let randomShark = Math.floor(Math.random() * 10) + 1;
+            console.log(randomShark)
+            if (randomShark <= 5) {
+                bads1.classList.add("badL2a")
+            } else if (randomShark > 5) {
+                bads1.classList.add("shark2")
+
+            }
+
+            bads1.y = bads1.style.top;
+            bads1.x = bads1.start;
+            
+            gameArea.appendChild(bads1);
+
+        }
+
+        ///// L2 ADD BAD (JELLY )  ///////////////////
+
+        function addBadL2b(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.badL2b++;
+
+            let bads2 = document.createElement("div");
+            bads2.start = startPos;
+            bads2.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+
+            let randomJelly = Math.floor(Math.random() * 10) + 1;
+            console.log(randomJelly)
+            if (randomJelly <= 5) {
+                bads2.classList.add("badL2b")
+            } else if (randomJelly > 5 && randomJelly < 9) {
+                bads2.classList.add("jelly2")
+
+            } else if (randomJelly >= 9){
+                bads2.classList.add("ray2")
+            }
+
+            bads2.y = bads2.style.top;
+            bads2.x = bads2.start;
+
+            gameArea.appendChild(bads2);
+
+        }
+
+        ///////////L2 BAD ADD (RAY)  ////////////////
+
+        function addBadL2c(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.badL2c++;
+
+            let bads3 = document.createElement("div");
+            bads3.start = startPos + totalWidth;
+            bads3.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+            bads3.classList.add("badL2c");
+
+
+            bads3.y = bads3.style.top;
+            bads3.x = bads3.start;
+            //bad1.id = player.bad;
+
+            // player.bad = player.bad + 3
+
+            gameArea.appendChild(bads3);
+
+        }
+
+        ///L2 RANDOM GOOD **SALMON /SHRIMP toptobot//
+
+        function addGoodL2a(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.goodL2a++;
+
+            let good2a = document.createElement("div");
+            good2a.start = startPos;
+
+            //hz spacing for vertical items // 
+
+            good2a.style.left = (Math.floor(Math.random() * (totalWidth *0.92))) + "px";
+
+            // Randomizer char // 
+            let randomGood = Math.floor(Math.random() * 10) + 1;
+
+            if (randomGood <= 5) {
+                good2a.classList.add("goodL2a");
+            } else if (randomGood > 5) {
+                good2a.classList.add("goodL2b");
+
+            }
+
+
+            good2a.x = good2a.style.left;
+            good2a.y = good2a.start;
+
+            gameArea.appendChild(good2a);
+
+        }
+
+
+        ///L2  ADD BOTTOM UP BADDGUY OCTO //////////
+
+        function addGoodL2b(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.goodL2b++;
+
+            let bot2 = document.createElement("div");
+            bot2.start = startPos + totalHeight + Math.floor(Math.random() * 350);
+
+            /// randomize start hz position for vertical fallers /// 
+
+            bot2.style.left = (Math.floor(Math.random() * (totalWidth * 0.9))) + "px";
+
+            let randomOct = Math.floor(Math.random() * 10) + 1;
+
+            if (randomOct <= 5) {
+                bot2.classList.add("puffer");
+            } else if (randomOct > 5) {
+                bot2.classList.add("goodL2c");
+
+            }
+
+            //bot2.classList.add("goodL2c");
+
+            bot2.x = bot2.style.left;
+            bot2.y = bot2.start;
+
+            gameArea.appendChild(bot2);
+
+        }
+
+        /////L2 ADD SURVIVOR ////////////////////////
+
+        function addSurvivor2(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            //player.survivor = player.survivor +1;
+            player.surv2++
+            
+            let surv2 = document.createElement("div");
+            surv2.start = (startPos + totalHeight)*2;
+
+            /// randomize start hz position for vertical fallers /// 
+
+            surv2.style.left = (Math.floor(Math.random() * (totalWidth * 0.9))) + "px";
+
+            surv2.classList.add("survivor2");
+
+
+            surv2.x = surv2.style.left;
+            surv2.y = surv2.start;
+
+            gameArea.appendChild(surv2);
+
+        }
+
+        /**
+         * memo **********L3 ADD CHARS SETUP *************  */
+
+        /////L3 ADDCHAR 1   (GROVER) ///////
+
+        function addGrover(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.grover++;
+
+            let bads1 = document.createElement("div");
+            bads1.start = startPos + totalWidth;
+            bads1.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+
+            bads1.classList.add("grover");
+
+     
+            bads1.y = bads1.style.top;
+            bads1.x = bads1.start;
+            //bad1.id = player.bad;
+
+            // player.bad = player.bad + 3
+
+            gameArea.appendChild(bads1);
+
+        }
+
+        //L3 ADDCHAR ******* MIMES ////////
+
+        function addMime(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.mime++;
+
+            let bads2 = document.createElement("div");
+            bads2.start = startPos;
+            bads2.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+
+            let randomJelly = Math.floor(Math.random() * 10) + 1;
+            console.log(randomJelly)
+            if (randomJelly <= 5) {
+                bads2.classList.add("tiger")
+            } else if (randomJelly > 5) {
+                bads2.classList.add("master")
+
+            }
+
+            bads2.y = bads2.style.top;
+            bads2.x = bads2.start;
+
+            gameArea.appendChild(bads2);
+
+        }
+
+        ////L3 add BAD MCD /////////////////////////
+
+        function addMcd(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.mcd++;
+
+            let bads3 = document.createElement("div");
+            bads3.start = startPos + totalWidth;
+            bads3.style.top = (Math.floor(Math.random() * (totalHeight * 0.86) + 25)) + "px";
+            bads3.classList.add("mcd");
+
+
+            bads3.y = bads3.style.top;
+            bads3.x = bads3.start;
+
+            gameArea.appendChild(bads3);
+
+        }
+
+        ///L3  ADD Dropping TREATS //////////
+
+        function addTreats(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.treats++;
+
+            let treat = document.createElement("div");
+            treat.start = startPos;
+
+            //hz spacing for vertical items // 
+
+            treat.style.left = (Math.floor(Math.random() * totalWidth)) + "px";
+
+            // Randomizer char // 
+            let randomTreat = Math.floor(Math.random() * 10) + 1;
+
+            if (randomTreat <= 3) {
+                treat.classList.add("doughnut");
+            } else if (randomTreat > 3 && randomTreat <=7 ) {
+                treat.classList.add("cone");
+
+            } else if (randomTreat > 7){
+                treat.classList.add("popcorn");
+            }
+
+
+            treat.x = treat.style.left;
+            treat.y = treat.start;
+
+            gameArea.appendChild(treat);
+
+        }
+
+        ///L3 ADD SURVIVORS /////////////
+
+        function addSurvivor3(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            //player.survivor = player.survivor +1;
+            player.surv3++
+            let surv3 = document.createElement("div");
+            surv3.start = (startPos + totalHeight)*2;
+
+            /// randomize start hz position for vertical fallers /// 
+
+            surv3.style.left = (Math.floor(Math.random() * totalWidth)) + "px";
+
+            let randomSurv = Math.floor(Math.random() * 10) + 1;
+
+            if (randomSurv <= 5) {
+                surv3.classList.add("survivor");
+            } else if (randomSurv > 5) {
+                surv3.classList.add("survivor2");
+
+            }
+
+
+            surv3.x = surv3.style.left;
+            surv3.y = surv3.start;
+
+            gameArea.appendChild(surv3);
+
+        }
+
+        //L3 ADD BOTTOM BAD (CAGE / MONKEY) /////
+
+        function addCage(startPos) {
+
+            totalHeight = gameArea.offsetHeight;
+            totalWidth = gameArea.offsetWidth;
+
+            player.cage++;
+
+            let bot2 = document.createElement("div");
+            bot2.start = startPos + totalHeight;
+
+            /// randomize start hz position for vertical fallers /// 
+
+            bot2.style.left = (Math.floor(Math.random() * totalWidth)) + "px";
+
+            let randomOct = Math.floor(Math.random() * 10) + 1;
+
+            if (randomOct <= 5) {
+                bot2.classList.add("cage");
+            } else if (randomOct > 5) {
+                bot2.classList.add("monkey2");
+
+            }
+
+            //bot2.classList.add("goodL2c");
+
+            bot2.x = bot2.style.left;
+            bot2.y = bot2.start;
+
+            gameArea.appendChild(bot2);
+
+        }
+
+        /**
+         * memo ** L2 START CHAR MVMT FUNCS on LEV2 **** */
+
+        /////L2 MOVE BAD1 (SHARK) //////////////
+
+        function moveBadL2(turd) {
+            let lines9 = document.querySelectorAll(".badL2a, .shark2");
+            let counter9 = 0;
+            lines9.forEach(function (item9) {
+                
+                item9.x -= (Math.floor(Math.random() * 4) + 4); //char.speed +/-
+
+                item9.style.left = item9.x + "px";
+                if (item9.x < 0) {
+                    item9.parentElement.removeChild(item9);
+                    counter9++;
+                }
+
+                if (isCollide(item9, turd)) {
+
+                    myAudio5.play()
+
+                    player.lives = player.lives - 7;
+                    if (player.lives <= 0) {
+                        playGameOver2(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter9; x++) {
+                addBadL2a(0)
+            }
+
+            //////L2 Move 2nd ENEMY MOVE (JELLY)   ///////////
+
+            let lines10 = document.querySelectorAll(".badL2b, .jelly2, .ray2");
+            let counter10 = 0;
+            lines10.forEach(function (item10) {
+                
+                item10.x += (Math.floor(Math.random() * 6) + 2); //player.speed +
+                item10.style.left = item10.x + "px";
+                if (item10.x > totalWidth) {
+                    item10.parentElement.removeChild(item10);
+                    counter10++;
+
+                }
+                if (isCollide(item10, turd)) {
+                    player.lives = player.lives -1;
+                    myAudio10.play();
+
+                    if (player.lives <= 0) {
+                        playGameOver2(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter10; x++) {
+                addBadL2b(0)
+            }
+
+            //////L2    3rd ENEMY MOVE RAY    //////////////
+
+            let lines11 = document.querySelectorAll(".badL2c");
+            let counter11 = 0;
+            lines11.forEach(function (item11) {
+                
+                item11.x -= (Math.floor(Math.random() * 8) + 5); //player.speed +
+                item11.style.left = item11.x + "px";
+                if (item11.x < 0) {
+                    item11.parentElement.removeChild(item11);
+                    counter11++;
+
+                }
+                if (isCollide(item11, turd)) {
+                    myAudio11.play();
+                    player.lives = player.lives -2;
+                    if (player.lives <= 0) {
+                        playGameOver2(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter11; x++) {
+                addBadL2c(0)
+            }
+
+            /////L2 POWERUP GOOD SALMON AND SHRIMP POWER UP///
+
+            let lines4 = document.querySelectorAll(".goodL2a, .goodL2b");
+            let counter4 = 0;
+            lines4.forEach(function (item4) {
+                
+                item4.y += (Math.floor(Math.random() * 8) + 8); //player.speed +
+                item4.style.top = item4.y + "px";
+                if (item4.y > totalHeight) {
+                    item4.parentElement.removeChild(item4);
+                    counter4++;
+
+                }
+                if (isCollide(item4, turd)) {
+
+                    myAudio3.play();
+
+                    player.lives = player.lives + 2
+
+                }
+
+            })
+            for (let x = 0; x < counter4; x++) {
+                addGoodL2a(0)
+            }
+
+            //////// LEVEL 2 BOTTOM BAD octos(from bottom to top) // 
+
+            let lines5 = document.querySelectorAll(".goodL2c, .puffer");
+            let counter5 = 0;
+            lines5.forEach(function (item5) {
+                
+                item5.y -= (Math.floor(Math.random() * 8) + 4); //player.speed +
+                item5.style.top = item5.y + "px";
+                if (item5.y < 0) {
+                    item5.parentElement.removeChild(item5);
+                    counter5++;
+
+                }
+                if (isCollide(item5, turd)) {
+
+                    myAudio9.play();
+                    player.lives = player.lives - 4;
+
+
+                    if (player.lives <= 0) {
+                        playGameOver2(turd);
+                    }
+
+
+                }
+
+            })
+            for (let x = 0; x < counter5; x++) {
+                addGoodL2b(0)
+            }
+
+
+            ////L2 SURVIVOR MOVE ///////////////////////////////
+
+            let lines6 = document.querySelectorAll(".survivor2");
+            let counter6 = 0;
+            lines6.forEach(function (item6) {
+                
+                item6.y -= (Math.floor(Math.random() * 8) + 4); //player.speed +
+                item6.style.top = item6.y + "px";
+                if (item6.y < 0) {
+                    item6.parentElement.removeChild(item6);
+                    counter6++;
+
+                }
+                if (isCollide(item6, turd)) {
+
+                    myAudio14.play();
+
+                    player.survivor++;
+                    player.lives = player.lives + 15;
+                    item6.parentElement.removeChild(item6);
+                    counter6++;
+                }
+
+            })
+            for (let x = 0; x < counter6; x++) {
+                addSurvivor2(0)
+            }
+
+        }
+
+        /**
+         *  memo *** L3 MOVEBAD 3  MOVEMENT **** */
+
+
+        function moveBadL3(turd) {
+            let lines9 = document.querySelectorAll(".grover");
+            let counter9 = 0;
+            lines9.forEach(function (item9) {
+                
+                item9.x -= (Math.floor(Math.random() * 4) + 4); //char.speed +/-
+
+                item9.style.left = item9.x + "px";
+                if (item9.x < 0) {
+                    item9.parentElement.removeChild(item9);
+                    counter9++;
+                }
+
+                if (isCollide(item9, turd)) {
+
+                    myAudio5.play()
+
+                    player.lives = player.lives - 4
+                    if (player.lives <= 0) {
+                        playGameOver2(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter9; x++) {
+                addGrover(0)
+            }
+
+            //////L3 2nd ENEMY MOVE (MIMES?)   ///////////
+
+            let lines10 = document.querySelectorAll(".tiger, .master");
+            let counter10 = 0;
+            lines10.forEach(function (item10) {
+                
+                item10.x += (Math.floor(Math.random() * 6) + 2); //player.speed +
+                item10.style.left = item10.x + "px";
+                if (item10.x > totalWidth) {
+                    item10.parentElement.removeChild(item10);
+                    counter10++;
+
+                }
+                if (isCollide(item10, turd)) {
+                    player.lives = player.lives -3
+                    myAudio10.play();
+
+                    if (player.lives <= 0) {
+                        playGameOver2(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter10; x++) {
+                addMime(0)
+            }
+
+
+            ////L3  3rd ENEMY MOVE     MCD   //////////////
+
+            let lines11 = document.querySelectorAll(".mcd");
+            let counter11 = 0;
+            lines11.forEach(function (item11) {
+                
+                item11.x -= (Math.floor(Math.random() * 8) + 5); //player.speed +
+                item11.style.left = item11.x + "px";
+                if (item11.x < 0) {
+                    item11.parentElement.removeChild(item11);
+                    counter11++;
+
+                }
+                if (isCollide(item11, turd)) {
+                    myAudio15.play();
+                    player.lives = player.lives -3
+                    if (player.lives <= 0) {
+                        playGameOver2(turd);
+                    }
+                }
+
+            })
+            for (let x = 0; x < counter11; x++) {
+                addMcd(0)
+            }
+
+            /////L3 POWERUP GOOD MOVE doughnut AND cone POWER UP///
+
+            let lines4 = document.querySelectorAll(".doughnut, .cone, .popcorn");
+            let counter4 = 0;
+            lines4.forEach(function (item4) {
+                
+                item4.y += (Math.floor(Math.random() * 8) + 8); //player.speed +
+                item4.style.top = item4.y + "px";
+                if (item4.y > totalHeight) {
+                    item4.parentElement.removeChild(item4);
+                    counter4++;
+
+                }
+                if (isCollide(item4, turd)) {
+
+                    myAudio3.play();
+
+                    player.lives = player.lives + 1
+
+                }
+
+            })
+            for (let x = 0; x < counter4; x++) {
+                addTreats(0)
+            }
+
+            ////// LEVEL 3 BOTTOM BAD CAGE/monkey(from bottom to top) // 
+
+            let lines5 = document.querySelectorAll(".cage, .monkey2");
+            let counter5 = 0;
+            lines5.forEach(function (item5) {
+                
+                item5.y -= (Math.floor(Math.random() * 8) + 4); //player.speed +
+                item5.style.top = item5.y + "px";
+                if (item5.y < 0) {
+                    item5.parentElement.removeChild(item5);
+                    counter5++;
+
+                }
+                if (isCollide(item5, turd)) {
+
+                    myAudio16.play();
+                    player.lives = player.lives - 5;
+
+
+                    if (player.lives <= 0) {
+                        playGameOver2(turd);
+                    }
+
+
+                }
+
+            })
+            for (let x = 0; x < counter5; x++) {
+                addCage(0)
+            }
+
+
+            //L3 SURVIVOR MOVE ///////////////////////////////
+
+            let lines14 = document.querySelectorAll(".survivor2, .survivor");
+            let counter14 = 0;
+            lines14.forEach(function (item14) {
+                
+                item14.y -= (Math.floor(Math.random() * 8) + 4); //player.speed +
+                item14.style.top = item14.y + "px";
+                if (item14.y < 0) {
+                    item14.parentElement.removeChild(item14);
+                    counter14++;
+
+                }
+                if (isCollide(item14, turd)) {
+
+                    myAudio14.play();
+
+                    player.survivor++;
+                    player.lives = player.lives + 10;
+                    item14.parentElement.removeChild(item14);
+                    counter14++;
+                }
+
+            })
+            for (let x = 0; x < counter14; x++) {
+                addSurvivor3(0)
+            }
+
+        }
+    </script>
+
+
+    /**
+    * ! ******* SCRIPT PLUGGINS DON"T TOUCH ***** **************** */
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
