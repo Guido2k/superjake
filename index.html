@@ -591,7 +591,7 @@
 
                     myAudio5.play()
 
-                    player.lives = player.lives - 2;
+                    player.lives = player.lives - 4;
                     if (player.lives <= 0) {
                         playGameOver(turd);
                     }
@@ -644,7 +644,7 @@
                 }
                 if (isCollide(item3, turd)) {
                     myAudio4.play();
-                    player.lives = player.lives -1;
+                    player.lives = player.lives -2;
                     if (player.lives <= 0) {
                         playGameOver(turd);
                     }
@@ -671,7 +671,7 @@
                 if (isCollide(item4, turd)) {
 
                     myAudio3.play();
-                    player.lives = player.lives + 4
+                    player.lives = player.lives + 3
 
                 }
 
@@ -732,7 +732,7 @@
                     myAudio14.play();
 
                     player.survivor = player.survivor + 1;
-                    player.lives = player.lives +50;
+                    player.lives = player.lives +30;
                     item6.parentElement.removeChild(item6);
                     counter6++;
                 }
